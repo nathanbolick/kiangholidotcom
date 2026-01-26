@@ -1,24 +1,29 @@
+import img1 from "/photos/pic1.png";
+import img2 from "/photos/pic2.png";
+import img3 from "/photos/pic3.png";
+import img4 from "/photos/pic4.png";
+
 const PHOTOS = [
   {
-    src: "src/assets/Screenshot 2026-01-26 at 8.23.17 AM.png",
+    src: img1,
     alt: "Selected Frame I",
     title: "",
     meta: "",
   },
   {
-    src: "src/assets/Screenshot 2026-01-26 at 8.24.04 AM.png",
+    src: img4,
     alt: "Selected Frame II",
     title: "",
     meta: "",
   },
   {
-    src: "src/assets/Screenshot 2026-01-26 at 8.24.24 AM.png",
+    src: img3,
     alt: "Selected Frame III",
     title: "",
     meta: "",
   },
   {
-    src: "src/assets/Screenshot 2026-01-26 at 8.23.48 AM.png",
+    src: img2,
     alt: "Selected Frame IV",
     title: "",
     meta: "",
