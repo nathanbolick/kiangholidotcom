@@ -30,13 +30,13 @@ const YT = [
   // Demo placeholders so other tabs aren't empty yet
   {
     group: "music-videos",
-    id: "aqz-KE-bpKQ",
+    id: "",
     title: "Music Video (Demo)",
     meta: "Music video • demo",
   },
   {
     group: "promotionals",
-    id: "dQw4w9WgXcQ",
+    id: "",
     title: "Promotional (Demo)",
     meta: "Promotional • demo",
   },
