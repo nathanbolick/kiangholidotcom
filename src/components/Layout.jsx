@@ -5,7 +5,15 @@ function Layout() {
     <div className="page">
       <header className="top">
         <div className="brand">
-          <h1 className="brandTitle">KIAN GHOLI</h1>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `brandTitle brandLink${isActive ? " navLinkActive" : ""}`
+            }
+            aria-label="Home"
+          >
+            KIAN GHOLI
+          </NavLink>
 
           <nav className="nav" aria-label="Primary">
             <NavLink
@@ -14,7 +22,7 @@ function Layout() {
               }
               to="/photo"
             >
-              PHOTO
+              gallery
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -22,7 +30,7 @@ function Layout() {
               }
               to="/film"
             >
-              FILM
+              film
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -30,7 +38,7 @@ function Layout() {
               }
               to="/about"
             >
-              ABOUT
+              about
             </NavLink>
           </nav>
         </div>

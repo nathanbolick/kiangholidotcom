@@ -73,6 +73,100 @@ export default function AboutPage() {
 
           <div className="aboutDivider" role="separator" aria-hidden="true" />
 
+          {/* Skills */}
+          <section className="aboutSkills" aria-label="Skills">
+            <h3 className="aboutSkillsTitle">Skills</h3>
+
+            <div className="aboutSkillsGrid">
+              <div className="aboutSkill">
+                <span className="aboutSkillIcon">🎬</span>
+                <span className="aboutSkillLabel">Directing</span>
+              </div>
+
+              <div className="aboutSkill">
+                <span className="aboutSkillIcon">✍️</span>
+                <span className="aboutSkillLabel">Writing</span>
+              </div>
+
+              <div className="aboutSkill">
+                <span className="aboutSkillIcon">✂️</span>
+                <span className="aboutSkillLabel">Editing</span>
+              </div>
+
+              <div className="aboutSkill">
+                <span className="aboutSkillIcon">🎨</span>
+                <span className="aboutSkillLabel">Color Grading</span>
+              </div>
+
+              <div className="aboutSkill">
+                <span className="aboutSkillIcon">🎧</span>
+                <span className="aboutSkillLabel">Sound Design</span>
+              </div>
+
+              <div className="aboutSkill">
+                <span className="aboutSkillIcon">💻</span>
+                <span className="aboutSkillLabel">Post‑Production</span>
+              </div>
+            </div>
+          </section>
+
+          {/* Social Links */}
+          <section className="aboutSocial" aria-label="Social links">
+            <h3 className="aboutSkillsTitle">Connect</h3>
+
+            <div className="aboutSocialGrid">
+              <a
+                className="aboutSocialLink"
+                href="https://www.instagram.com/unexpectedkey/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="aboutSocialIcon">📸</span>
+                <span>Instagram</span>
+              </a>
+
+              <a
+                className="aboutSocialLink"
+                href="https://www.linkedin.com/in/kian-gholi-baghshahi-b94522144/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="aboutSocialIcon">💼</span>
+                <span>LinkedIn</span>
+              </a>
+
+              <a
+                className="aboutSocialLink"
+                href="https://www.youtube.com/@yawnkian"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="aboutSocialIcon">▶️</span>
+                <span>YouTube</span>
+              </a>
+
+              <a
+                className="aboutSocialLink"
+                href="https://vimeo.com/user83242297"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="aboutSocialIcon">🎞️</span>
+                <span>Vimeo</span>
+              </a>
+
+              <a
+                className="aboutSocialLink"
+                href="https://letterboxd.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="aboutSocialIcon">🎟️</span>
+                <span>Letterboxd</span>
+              </a>
+            </div>
+          </section>
+
           <div className="aboutDetails" aria-label="Details">
             <div className="aboutDetail">
               <div className="aboutDetailLabel"></div>
