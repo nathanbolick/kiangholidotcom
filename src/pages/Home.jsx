@@ -31,13 +31,13 @@ const PHOTO_ITEMS = [
 const VIDEO_ITEMS = [
   {
     type: "video",
-    id: "dQw4w9WgXcQ",
+    id: "",
     title: "Selected Work",
     meta: "Short film • 4K",
   },
   {
     type: "video",
-    id: "aqz-KE-bpKQ",
+    id: "",
     title: "Selected Work",
     meta: "Documentary • natural light",
   },
@@ -130,11 +130,6 @@ export default function HomePage() {
           </div>
         ))}
       </div>
-
-      <p className="homeNote">
-        This page shows a randomized subset for demo purposes. Swap in real
-        images (local) and video IDs as soon as you have the final selects.
-      </p>
     </section>
   );
 }

@@ -22,7 +22,7 @@ function Layout() {
               }
               to="/photo"
             >
-              gallery
+              Gallery
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -30,7 +30,7 @@ function Layout() {
               }
               to="/film"
             >
-              film
+              Film
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -38,7 +38,7 @@ function Layout() {
               }
               to="/about"
             >
-              about
+              About
             </NavLink>
           </nav>
         </div>

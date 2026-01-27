@@ -264,8 +264,7 @@ body {
   margin: 0;
   font-family: var(--font-display);
   letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-size: 18px;
+  font-size: 20px;
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -1068,7 +1067,7 @@ body {
   font-family: var(--font-display);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 15px;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 14px;
 }
@@ -1088,19 +1087,12 @@ body {
 .aboutSkill {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 10px 12px;
-
+  padding: 10px 10px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.04),
-    rgba(0, 0, 0, 0.2)
-  );
-
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+  text-align: center;
 }
 
 .aboutSkillIcon {
@@ -1109,6 +1101,7 @@ body {
 
 .aboutSkillLabel {
   font-size: 13px;
+  font-weight: bold;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.8);
@@ -1136,24 +1129,17 @@ body {
 
 .aboutSocialLink {
   display: flex;
+  font-weight: bold;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   padding: 10px 12px;
-
-  text-decoration: none;
   color: rgba(255, 255, 255, 0.85);
 
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.04),
-    rgba(0, 0, 0, 0.2)
-  );
-
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
 
+  text-align: center;
   transition: all 160ms ease;
 }
 
