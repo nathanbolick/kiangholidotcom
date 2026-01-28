@@ -96,7 +96,7 @@ export default function PhotoPage() {
   return (
     <section className="photo" aria-label="Photo">
       <header className="photoHeader">
-        <h2 className="photoH2">Photo</h2>
+        <h2 className="photoH2">Gallery</h2>
         <p className="photoLead">A curated set of photos.</p>
 
         <nav className="photoTabs" aria-label="Photo categories">
