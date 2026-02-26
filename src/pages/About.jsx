@@ -24,55 +24,6 @@ export default function AboutPage() {
 
         {/* Bio */}
         <div className="aboutBody">
-          <h2 className="aboutTitle">About</h2>
-
-          <p className="aboutLead"></p>
-
-          <div className="aboutBio">
-            <p>
-              👋Hi! I'm Kian Gholi Baghshahi, a graduate from the University of
-              Georgia with a Bachelor's Degree in Entertainment Media and
-              Digital Marketing from the Grady College of Journalism and Mass
-              Communication. With a focus on film and television, I am dedicated
-              to honing my skills and voice to tell meaningful stories. I last
-              interned at Catapult Acting Studios on their production team in
-              Atlanta, shooting reels for rising actors to showcase their
-              abilities.
-            </p>
-
-            <p>
-              💡Throughout my time I have worked on various short films and
-              creative projects of my own and my colleagues, including "Life's
-              Many Doors," which won the Audience Choice Award at the 2024
-              Backlight Film Festival. Additionally, I produced commercials for
-              the University of Georgia's Law School Master's Program,
-              ShutterScope Media, and Your Pie Pizzeria. My experience also
-              includes digital marketing where I created content for Athens Real
-              Estate company and Habitat for Humanity through their social media
-              platforms.
-            </p>
-
-            <p>
-              🔧Proficient in DaVinci Resolve, Adobe Premiere Pro, Photoshop,
-              InDesign, After Effects, Slack, and Autodesk Maya, with extensive
-              experience in post-production for a wide range of projects. Having
-              worked on numerous production sets, I've learned to utilize my
-              communication skills, open-mindedness, and detailed eye in any
-              situation. As a team-oriented individual, I thrive in
-              collaborative environments, both on-set and in post-production.
-              I'm passionate about bringing stories to life in and creating
-              content that engages, challenges, and inspires audiences. I look
-              forward to continuing my journey and collaborating with talented
-              peers and professionals who share my enthusiasm for the craft.
-            </p>
-
-            <p className="aboutMeta">
-              Available for commissions and collaborations.
-            </p>
-          </div>
-
-          <div className="aboutDivider" role="separator" aria-hidden="true" />
-
           {/* Skills */}
           <section className="aboutSkills" aria-label="Skills">
             <h3 className="aboutSkillsTitle">Skills</h3>
@@ -109,6 +60,42 @@ export default function AboutPage() {
               </div>
             </div>
           </section>
+          <h2 className="aboutTitle">About</h2>
+
+          <p className="aboutLead"></p>
+
+          <div className="aboutBio">
+            <p>
+              Hi, I'm Kian — a filmmaker and post-production specialist based in
+              Atlanta, GA, and a graduate of the Entertainment & Media Studies
+              program at the University of Georgia's College of Journalism and
+              Mass Communication. I craft visually compelling stories that
+              resonate beyond the screen. I've worked across short films, music
+              videos, and digital campaigns as an editor, cinematographer,
+              gaffer, and director, bringing a meticulous eye for detail, strong
+              communication, and a collaborative mindset to every project.
+              Alongside narrative work, I create multimedia content for
+              nonprofits and local businesses, blending storytelling with
+              strategic digital marketing. I also work freelance as an A/V
+              production technician with Encore Global, managing live event
+              production and delivering high quality audio-visual experiences.
+            </p>
+
+            <p>
+              I'm proficient in DaVinci Resolve, Adobe Premiere Pro, After
+              Effects, Avid, Photoshop, InDesign, and Autodesk Maya.
+            </p>
+
+            <p>
+              I'm available for freelance editing and videography and welcome
+              collaboration with directors, brands, agencies, and independent
+              creators. Whether refining a project in post or building one from
+              the ground up, I'm committed to delivering thoughtful,
+              high-quality work tailored to each client's vision.
+            </p>
+          </div>
+
+          <div className="aboutDivider" role="separator" aria-hidden="true" />
 
           {/* Social Links */}
           <section className="aboutSocial" aria-label="Social links">

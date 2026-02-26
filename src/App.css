@@ -1,8 +1,31 @@
 :root {
-  --bg: #050505;
-  --red: #a93232;
-  --redDark: #6f1515;
-  --text: #e9e9e9;
+  /* White + Purple (readable gallery theme) */
+  --bg: #fffbf5;
+  --surface: #f6f3ff;
+
+  --purple: #ab5dff;
+  --purpleDark: #4c1d95;
+  --lavender: #c4b5fd;
+
+  /* Text on light */
+  --text: #0b0b10;
+  --textMuted: rgba(11, 11, 16, 0.72);
+
+  /* Back-compat: used in some elements */
+  --red: var(--purple);
+  --redDark: var(--purpleDark);
+
+  /* Font hooks */
+  --font-display: "Spaced", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+@font-face {
+  font-family: "Spaced";
+  src: url("./assets/GaliverSansObliques-B6xB.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 html,
@@ -17,7 +40,6 @@ body {
   color: var(--text);
 }
 
-/* Page */
 .page {
   min-height: 100vh;
   background: var(--bg);
@@ -26,21 +48,15 @@ body {
   position: relative;
 }
 
-/* Subtle diagonal texture like the screenshot */
+/* Subtle texture on white */
 .page::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: repeating-linear-gradient(
-    -45deg,
-    rgba(255, 255, 255, 0.03) 0px,
-    rgba(255, 255, 255, 0.03) 18px,
-    rgba(0, 0, 0, 0) 18px,
-    rgba(0, 0, 0, 0) 36px
-  );
-  opacity: 0.35;
-  mix-blend-mode: overlay;
+  background: var(--bg);
+  opacity: 0.22;
+  mix-blend-mode: multiply;
 }
 
 /* Top centered header area */
@@ -56,7 +72,6 @@ body {
   text-align: center;
 }
 
-/* Big red title with a slight 3D/shadowed feel */
 .brandTitle {
   margin: 0;
   font-family: var(--font-display);
@@ -65,13 +80,11 @@ body {
   text-transform: uppercase;
   font-size: clamp(100px, 7vw, 80px);
   line-height: 0.92;
-  color: #a93232;
-  /* Subtle flicker (light sign vibe) */
+  color: var(--purple);
   animation: titleFlicker 13.5s infinite;
   letter-spacing: -2px;
 }
 
-/* Nav under title */
 .nav {
   display: flex;
   justify-content: center;
@@ -82,8 +95,9 @@ body {
   font-family: var(--font-display);
   letter-spacing: 0.1em;
   font-size: clamp(1.5em, 1vw, 10px);
-  color: #a93232;
+  color: var(--purple);
   opacity: 0.9;
+  text-decoration: none;
 }
 
 .navLink:hover {
@@ -91,21 +105,37 @@ body {
 }
 
 .navLink:focus-visible {
-  outline: 2px solid rgba(166, 43, 43, 0.8);
+  outline: 2px solid rgba(124, 58, 237, 0.8);
   outline-offset: 6px;
-  border-radius: 6px;
 }
 
-/* Empty stage area beneath header */
 .stage {
   position: relative;
   z-index: 1;
   min-height: calc(100vh - 160px);
 }
 
-/* Placeholder sections (invisible but keep scroll targets) */
 .section {
   height: 1px;
+}
+
+/* ==============================
+   Shared “gallery card” surface
+   ============================== */
+
+.aboutPortraitFrame,
+.filmFrame,
+.photoFrame,
+.homeFrame {
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(11, 11, 16, 0.08);
+}
+
+.aboutPortraitFrame::before,
+.filmFrame::before,
+.photoFrame::before,
+.homeFrame::before {
+  content: none;
 }
 
 /* ==============================
@@ -128,20 +158,9 @@ body {
   margin: 0;
 }
 
-/* Film-inspired frame with subtle perforation vibe */
 .aboutPortraitFrame {
   position: relative;
-  border-radius: 16px;
   padding: 14px;
-  background: radial-gradient(
-      1200px 500px at 30% 20%,
-      rgba(255, 255, 255, 0.06),
-      rgba(255, 255, 255, 0) 60%
-    ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 36px rgba(166, 43, 43, 0.22),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   opacity: 0;
   transform: translateY(14px);
@@ -154,52 +173,17 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.06) 0px,
-    rgba(255, 255, 255, 0.06) 6px,
-    rgba(0, 0, 0, 0) 6px,
-    rgba(0, 0, 0, 0) 22px
-  );
-  opacity: 0.08;
-  mix-blend-mode: overlay;
 }
 
 .aboutPortraitInner {
-  border-radius: 12px;
   aspect-ratio: 4 / 5;
-  background: radial-gradient(
-      520px 520px at 50% 60%,
-      rgba(166, 43, 43, 0.28),
-      rgba(166, 43, 43, 0.12) 35%,
-      rgba(0, 0, 0, 0) 65%
-    ),
-    radial-gradient(
-      900px 420px at 60% 20%,
-      rgba(166, 43, 43, 0.16),
-      rgba(0, 0, 0, 0) 55%
-    ),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.15));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface);
   position: relative;
   overflow: hidden;
 }
 
-/* Subtle grain */
 .aboutPortraitInner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.025) 0px,
-    rgba(255, 255, 255, 0.025) 1px,
-    rgba(0, 0, 0, 0) 2px,
-    rgba(0, 0, 0, 0) 4px
-  );
-  opacity: 0.18;
-  mix-blend-mode: overlay;
+  content: none;
 }
 
 .aboutPortraitMark {
@@ -214,9 +198,9 @@ body {
 .aboutPortraitMarkTop {
   font-family: var(--font-display);
   letter-spacing: 0.18em;
-  /*text-transform: uppercase;*/
   font-size: 14px;
   opacity: 0.9;
+  color: var(--text);
 }
 
 .aboutPortraitMarkBottom {
@@ -225,7 +209,7 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 18px;
-  color: var(--red);
+  color: var(--purple);
 }
 
 .aboutCaption {
@@ -234,7 +218,7 @@ body {
   gap: 10px;
   align-items: baseline;
   font-size: 13px;
-  opacity: 0.9;
+
   opacity: 0;
   transform: translateY(10px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -245,11 +229,11 @@ body {
   font-family: var(--font-display);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--text);
 }
 
 .aboutCaptionText {
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--textMuted);
 }
 
 .aboutBody {
@@ -265,21 +249,21 @@ body {
   font-family: var(--font-display);
   letter-spacing: 0.14em;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
 }
 
 .aboutLead {
   margin: 12px 0 0;
   font-size: 18px;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.86);
+  color: var(--textMuted);
 }
 
 .aboutBio {
   margin-top: 14px;
   font-size: 15px;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--textMuted);
 }
 
 .aboutBio p {
@@ -287,7 +271,7 @@ body {
 }
 
 .aboutMeta {
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--textMuted);
 }
 
 .aboutDivider {
@@ -295,11 +279,11 @@ body {
   height: 1px;
   background: linear-gradient(
     90deg,
-    rgba(166, 43, 43, 0),
-    rgba(166, 43, 43, 0.55),
-    rgba(166, 43, 43, 0)
+    rgba(124, 58, 237, 0),
+    rgba(124, 58, 237, 0.55),
+    rgba(124, 58, 237, 0)
   );
-  opacity: 0.6;
+  opacity: 0.55;
 }
 
 .aboutDetails {
@@ -320,12 +304,12 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--textMuted);
 }
 
 .aboutDetailValue {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--textMuted);
 }
 
 .aboutPortraitImage {
@@ -361,7 +345,6 @@ body {
   }
 }
 
-/* Mobile spacing tweaks */
 @media (max-width: 520px) {
   .top {
     padding-top: 36px;
@@ -372,9 +355,12 @@ body {
   }
 }
 
+/* ==============================
+   Animations
+   ============================== */
+
 /* Flickering light effect for the header */
 @keyframes titleFlicker {
-  /* Mostly steady glow */
   0%,
   28%,
   30%,
@@ -384,31 +370,26 @@ body {
     filter: saturate(1.02) brightness(1);
   }
 
-  /* Slow “power sag” (cinematic dip) */
   29% {
     opacity: 0.82;
     filter: saturate(0.98) brightness(0.92);
   }
 
-  /* Brief “almost out” moment */
   29.35% {
     opacity: 0.35;
     filter: saturate(0.92) brightness(0.78);
   }
 
-  /* Quick recovery */
   29.7% {
     opacity: 0.95;
     filter: saturate(1) brightness(0.98);
   }
 
-  /* Second cluster later in the loop */
   63% {
     opacity: 0.88;
     filter: saturate(0.98) brightness(0.94);
   }
 
-  /* Tiny jitter blips (very quick, film-like) */
   63.25% {
     opacity: 0.55;
     filter: saturate(0.95) brightness(0.86);
@@ -419,14 +400,12 @@ body {
     filter: saturate(0.97) brightness(0.92);
   }
 
-  /* Settle */
   64% {
     opacity: 1;
     filter: saturate(1.02) brightness(1);
   }
 }
 
-/* About page: subtle swipe-up reveal */
 @keyframes aboutSwipeUp {
   from {
     opacity: 0;
@@ -435,37 +414,6 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .brandTitle {
-    animation: none;
-  }
-  .aboutPortraitFrame,
-  .aboutCaption,
-  .aboutBody {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-  .filmCard {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-  .photoCard {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-  .filmH2,
-  .filmLead,
-  .photoH2,
-  .photoLead {
-    animation: none;
-    opacity: 1;
-    transform: none;
   }
 }
 
@@ -488,7 +436,8 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -499,8 +448,9 @@ body {
   margin: 12px 0 0;
   font-size: 15px;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--textMuted);
   max-width: 64ch;
+
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -516,13 +466,11 @@ body {
 .filmCard {
   grid-column: span 12;
 
-  /* Subtle swipe-up reveal */
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Gentle stagger so the grid feels cinematic, not "UI-y" */
 .filmCard:nth-child(1) {
   animation-delay: 120ms;
 }
@@ -542,7 +490,6 @@ body {
   animation-delay: 520ms;
 }
 
-/* Two-column layout on wider screens */
 @media (min-width: 920px) {
   .filmCard {
     grid-column: span 6;
@@ -553,42 +500,21 @@ body {
   position: relative;
   border-radius: 16px;
   padding: 14px;
-  background: radial-gradient(
-      1200px 500px at 30% 20%,
-      rgba(255, 255, 255, 0.06),
-      rgba(255, 255, 255, 0) 60%
-    ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 30px rgba(166, 43, 43, 0.16),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
 .filmFrame::before {
   content: "";
   position: absolute;
-  inset: 0;
   pointer-events: none;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.06) 0px,
-    rgba(255, 255, 255, 0.06) 6px,
-    rgba(0, 0, 0, 0) 6px,
-    rgba(0, 0, 0, 0) 22px
-  );
-  opacity: 0.07;
-  mix-blend-mode: overlay;
 }
 
-/* Responsive YouTube embed */
 .filmEmbed {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border: 0;
+  border: 0px;
   border-radius: 12px;
   display: block;
-  background: rgba(0, 0, 0, 0.35);
 }
 
 .filmCaption {
@@ -602,24 +528,24 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.86);
+  color: var(--text);
 }
 
 .filmMeta {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--textMuted);
 }
 
 .filmNote {
   margin: 18px 0 0;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(11, 11, 16, 0.56);
 }
 
 .filmCode {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(11, 11, 16, 0.7);
 }
 
 /* ==============================
@@ -641,7 +567,8 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -652,8 +579,9 @@ body {
   margin: 12px 0 0;
   font-size: 15px;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--textMuted);
   max-width: 64ch;
+
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -672,19 +600,16 @@ body {
 }
 
 .photoCard {
-  /* Make cards work inside CSS columns */
   display: inline-block;
   width: 100%;
   break-inside: avoid;
   margin: 0 0 18px;
 
-  /* Subtle swipe-up reveal */
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Gentle stagger so it feels cinematic */
 .photoCard:nth-child(1) {
   animation-delay: 120ms;
 }
@@ -704,7 +629,6 @@ body {
   animation-delay: 520ms;
 }
 
-/* Two-column layout on wider screens */
 @media (min-width: 920px) {
   .photoCard {
     grid-column: span 6;
@@ -713,67 +637,25 @@ body {
 
 .photoFrame {
   position: relative;
-  border-radius: 16px;
   display: block;
   padding: 14px;
-  background: radial-gradient(
-      1200px 500px at 30% 20%,
-      rgba(255, 255, 255, 0.06),
-      rgba(255, 255, 255, 0) 60%
-    ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 30px rgba(166, 43, 43, 0.14),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
 .photoFrame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.06) 0px,
-    rgba(255, 255, 255, 0.06) 6px,
-    rgba(0, 0, 0, 0) 6px,
-    rgba(0, 0, 0, 0) 22px
-  );
-  opacity: 0.07;
-  mix-blend-mode: overlay;
+  content: none;
 }
 
-/* Placeholder frame styling for when you host images locally */
 .photoPlaceholder {
   width: 100%;
   aspect-ratio: 4 / 5;
-  border-radius: 12px;
-  background: radial-gradient(
-      900px 420px at 60% 20%,
-      rgba(166, 43, 43, 0.14),
-      rgba(0, 0, 0, 0) 55%
-    ),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.15));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface);
   position: relative;
   overflow: hidden;
 }
 
 .photoPlaceholder::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.02) 0px,
-    rgba(255, 255, 255, 0.02) 1px,
-    rgba(0, 0, 0, 0) 2px,
-    rgba(0, 0, 0, 0) 4px
-  );
-  opacity: 0.16;
-  mix-blend-mode: overlay;
+  content: none;
 }
 
 .photoCaption {
@@ -787,24 +669,24 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.86);
+  color: var(--text);
 }
 
 .photoMeta {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--textMuted);
 }
 
 .photoNote {
   margin: 18px 0 0;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(11, 11, 16, 0.56);
 }
 
 .photoCode {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(11, 11, 16, 0.7);
 }
 
 .photoPlaceholderMark {
@@ -822,6 +704,7 @@ body {
   text-transform: uppercase;
   font-size: 12px;
   opacity: 0.85;
+  color: var(--text);
 }
 
 .photoPlaceholderMarkBottom {
@@ -830,15 +713,15 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 16px;
-  color: var(--red);
-  text-shadow: 0 2px 0 var(--redDark), 0 12px 30px rgba(0, 0, 0, 0.65);
+  color: var(--purple);
+  text-shadow: 0 2px 0 rgba(76, 29, 149, 0.25),
+    0 12px 30px rgba(124, 58, 237, 0.22);
 }
 
 .photoImage {
   width: 100%;
   height: 100%;
   display: block;
-  border-radius: 12px;
   object-fit: cover;
 }
 
@@ -861,9 +744,8 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
 
-  /* Subtle swipe-up reveal */
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -874,10 +756,9 @@ body {
   margin: 12px 0 0;
   font-size: 15px;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--textMuted);
   max-width: 64ch;
 
-  /* Subtle swipe-up reveal */
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -901,7 +782,6 @@ body {
 }
 
 .homeCard {
-  /* Subtle swipe-up reveal */
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -912,15 +792,6 @@ body {
   position: relative;
   border-radius: 16px;
   padding: 14px;
-  background: radial-gradient(
-      1200px 500px at 30% 20%,
-      rgba(255, 255, 255, 0.06),
-      rgba(255, 255, 255, 0) 60%
-    ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 30px rgba(166, 43, 43, 0.14),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
@@ -929,22 +800,12 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.06) 0px,
-    rgba(255, 255, 255, 0.06) 6px,
-    rgba(0, 0, 0, 0) 6px,
-    rgba(0, 0, 0, 0) 22px
-  );
-  opacity: 0.07;
-  mix-blend-mode: overlay;
 }
 
 .homeImage {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 12px;
 }
 
 .homeEmbed {
@@ -953,20 +814,13 @@ body {
   border: 0;
   border-radius: 12px;
   display: block;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(11, 11, 16, 0.06);
 }
 
 .homePlaceholder {
   width: 100%;
   aspect-ratio: 4 / 5;
-  border-radius: 12px;
-  background: radial-gradient(
-      900px 420px at 60% 20%,
-      rgba(166, 43, 43, 0.14),
-      rgba(0, 0, 0, 0) 55%
-    ),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.15));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface);
   position: relative;
   overflow: hidden;
 }
@@ -978,13 +832,13 @@ body {
   pointer-events: none;
   background: repeating-linear-gradient(
     0deg,
-    rgba(255, 255, 255, 0.02) 0px,
-    rgba(255, 255, 255, 0.02) 1px,
+    rgba(76, 29, 149, 0.03) 0px,
+    rgba(76, 29, 149, 0.03) 1px,
     rgba(0, 0, 0, 0) 2px,
     rgba(0, 0, 0, 0) 4px
   );
-  opacity: 0.16;
-  mix-blend-mode: overlay;
+  opacity: 0.14;
+  mix-blend-mode: multiply;
 }
 
 .homePlaceholderMark {
@@ -1002,6 +856,7 @@ body {
   text-transform: uppercase;
   font-size: 12px;
   opacity: 0.85;
+  color: var(--text);
 }
 
 .homePlaceholderMarkBottom {
@@ -1010,8 +865,9 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 16px;
-  color: var(--red);
-  text-shadow: 0 2px 0 var(--redDark), 0 12px 30px rgba(0, 0, 0, 0.65);
+  color: var(--purple);
+  text-shadow: 0 2px 0 rgba(76, 29, 149, 0.25),
+    0 12px 30px rgba(124, 58, 237, 0.22);
 }
 
 .homeCaption {
@@ -1025,30 +881,28 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.86);
+  color: var(--text);
 }
 
 .homeMeta {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--textMuted);
 }
 
 .homeNote {
   margin: 18px 0 0;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(11, 11, 16, 0.56);
   max-width: 70ch;
 }
 
 .homeTagline {
   margin-top: 10px;
-  /*font-family: var(--font-display);*/
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(11, 11, 16, 0.52);
 
-  /* subtle reveal like the rest */
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -1068,7 +922,7 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text);
   margin-bottom: 14px;
 }
 
@@ -1090,8 +944,10 @@ body {
   justify-content: center;
   gap: 10px;
   padding: 10px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(76, 29, 149, 0.14);
+  border-radius: 999px;
+  box-shadow: 0 10px 22px rgba(11, 11, 16, 0.1);
+  background: var(--surface);
   text-align: center;
 }
 
@@ -1104,7 +960,7 @@ body {
   font-weight: bold;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(11, 11, 16, 0.8);
 }
 
 /* ==============================
@@ -1134,34 +990,30 @@ body {
   justify-content: center;
   gap: 10px;
   padding: 10px 12px;
-  color: rgba(255, 255, 255, 0.85);
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
-
+  color: rgba(11, 11, 16, 0.82);
+  text-decoration: none;
+  border: 2px solid rgba(76, 29, 149, 0.14);
+  border-radius: 999px;
+  box-shadow: 0 10px 22px rgba(11, 11, 16, 0.1);
+  background: var(--surface);
   text-align: center;
   transition: all 160ms ease;
 }
 
 .aboutSocialLink:hover {
   transform: translateY(-2px);
-  border-color: rgba(166, 43, 43, 0.35);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.55), 0 0 18px rgba(166, 43, 43, 0.2);
+  border-color: rgba(124, 58, 237, 0.35);
+  box-shadow: 0 12px 24px rgba(11, 11, 16, 0.16),
+    0 0 18px rgba(124, 58, 237, 0.2);
 }
 
 .aboutSocialIcon {
   font-size: 16px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .homeH2,
-  .homeLead,
-  .homeCard {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
+/* ==============================
+   Photo tabs
+   ============================== */
 
 .photoTabs {
   margin-top: 16px;
@@ -1175,15 +1027,17 @@ body {
   align-items: center;
   justify-content: center;
   padding: 8px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(76, 29, 149, 0.18);
   border-radius: 999px;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(11, 11, 16, 0.74);
+  background: rgba(171, 93, 255, 0.08);
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   transition: transform 160ms ease, border-color 160ms ease, color 160ms ease,
     box-shadow 160ms ease;
+  /* delayed swipe-up reveal */
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -1208,16 +1062,20 @@ body {
 
 .photoTab:hover {
   transform: translateY(-1px);
-  color: rgba(255, 255, 255, 0.85);
-  border-color: rgba(166, 43, 43, 0.35);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.45), 0 0 18px rgba(166, 43, 43, 0.18);
+  box-shadow: 0 8px 18px rgba(11, 11, 16, 0.08);
+  border-color: rgba(171, 93, 255, 0.32);
 }
 
 .photoTabActive {
-  color: rgba(255, 255, 255, 0.92);
-  border-color: rgba(166, 43, 43, 0.55);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.55), 0 0 22px rgba(166, 43, 43, 0.22);
+  color: rgba(11, 11, 16, 0.96);
+  border-color: rgba(124, 58, 237, 0.55);
+  box-shadow: 0 12px 26px rgba(11, 11, 16, 0.16),
+    0 0 22px rgba(124, 58, 237, 0.22);
 }
+
+/* ==============================
+   Film tabs
+   ============================== */
 
 .filmTabs {
   margin-top: 16px;
@@ -1231,15 +1089,22 @@ body {
   align-items: center;
   justify-content: center;
   padding: 8px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(76, 29, 149, 0.18);
   border-radius: 999px;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(11, 11, 16, 0.74);
+  background: linear-gradient(
+    180deg,
+    rgba(124, 58, 237, 0.05),
+    rgba(255, 255, 255, 0.9)
+  );
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   transition: transform 160ms ease, border-color 160ms ease, color 160ms ease,
     box-shadow 160ms ease;
+
+  /* delayed swipe-up reveal */
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -1258,13 +1123,42 @@ body {
 
 .filmTab:hover {
   transform: translateY(-1px);
-  color: rgba(255, 255, 255, 0.85);
-  border-color: rgba(166, 43, 43, 0.35);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.45), 0 0 18px rgba(166, 43, 43, 0.18);
+  color: rgba(11, 11, 16, 0.92);
+  border-color: rgba(124, 58, 237, 0.35);
+  box-shadow: 0 10px 22px rgba(11, 11, 16, 0.14),
+    0 0 18px rgba(124, 58, 237, 0.18);
 }
 
 .filmTabActive {
-  color: rgba(255, 255, 255, 0.92);
-  border-color: rgba(166, 43, 43, 0.55);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.55), 0 0 22px rgba(166, 43, 43, 0.22);
+  color: rgba(11, 11, 16, 0.96);
+  border-color: rgba(124, 58, 237, 0.55);
+  box-shadow: 0 12px 26px rgba(11, 11, 16, 0.16),
+    0 0 22px rgba(124, 58, 237, 0.22);
+}
+
+/* ==============================
+   Reduced motion
+   ============================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .brandTitle,
+  .aboutPortraitFrame,
+  .aboutCaption,
+  .aboutBody,
+  .filmCard,
+  .photoCard,
+  .filmH2,
+  .filmLead,
+  .photoH2,
+  .photoLead,
+  .homeH2,
+  .homeLead,
+  .homeCard,
+  .photoTab,
+  .filmTab,
+  .homeTagline {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }

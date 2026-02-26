@@ -1,9 +1,6 @@
 import { useMemo } from "react";
 import headshot from "../assets/748dadfde7-headshot.jpg";
 
-// Demo content for the Home mosaic.
-// When you receive real assets, replace `src` with local imports or /public paths,
-// and replace YouTube IDs with real ones.
 const PHOTO_ITEMS = [
   {
     type: "photo",
@@ -109,7 +106,6 @@ function HomeCard(item) {
 }
 
 export default function HomePage() {
-  // Create a small, curated mix and randomize it once per mount.
   const items = useMemo(() => {
     const mix = [...PHOTO_ITEMS, ...VIDEO_ITEMS];
     return shuffleOnce(mix).slice(0, 4);
@@ -118,11 +114,9 @@ export default function HomePage() {
   return (
     <section className="home" aria-label="Home">
       <header className="homeHeader">
-        <h2 className="homeH2">Home</h2>
         <div className="homeTagline">filmmaker • writer • editor</div>
         <p className="homeLead"></p>
       </header>
-
       <div className="homeMosaic">
         {items.map((item, idx) => (
           <div key={`${item.type}-${idx}`} className="homeMosaicItem">
