@@ -1,5 +1,42 @@
-import headshot from "../assets/748dadfde7-headshot.jpg";
+import { useEffect, useState } from "react";
+
+function getApiUrl() {
+  return (
+    import.meta.env.VITE_MEDIA_API_URL ||
+    import.meta.env.VITE_MEDIA_API ||
+    "/api/media"
+  );
+}
+
 export default function AboutPage() {
+  const [headshotSrc, setHeadshotSrc] = useState("");
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadHeadshot() {
+      try {
+        const res = await fetch(getApiUrl(), {
+          method: "GET",
+          mode: "cors",
+          headers: { Accept: "application/json" },
+        });
+
+        if (!res.ok) return;
+        const data = await res.json();
+
+        const src = data?.groups?.about?.[0]?.src || "";
+        if (!cancelled) setHeadshotSrc(src);
+      } catch {
+        // silent fail — fallback handled below
+      }
+    }
+
+    loadHeadshot();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
   return (
     <section className="about" aria-label="About">
       <div className="aboutGrid">
@@ -8,7 +45,7 @@ export default function AboutPage() {
           <div className="aboutPortraitFrame" role="img" aria-label="Portrait">
             <div className="aboutPortraitInner">
               <img
-                src={headshot}
+                src={headshotSrc || undefined}
                 alt="Portrait"
                 className="aboutPortraitImage"
                 loading="lazy"

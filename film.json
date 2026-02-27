@@ -1,0 +1,49 @@
+{
+  "updatedAt": "2026-02-26T00:00:00.000Z",
+  "sections": [
+    {
+      "slug": "narrative-shorts",
+      "title": "Narrative Shorts",
+      "items": [
+        { "title": "Regret", "type": "Narrative Short", "director": "Collin Young", "role": "Sound Mixer", "status": "In Production", "url": null },
+        { "title": "Jeannie Believes in Satiation", "type": "Narrative Short", "director": "Emeline Tart", "role": "Director of Photography", "status": "In Production", "url": null },
+        { "title": "Yowsa!", "type": "Narrative Short", "director": "Ethan Hughes", "role": "Sound Mixer", "status": "In Post-Production", "url": null },
+        { "title": "Ripley Loves Me", "type": "Narrative Short", "director": "Ethan Hughes", "role": "Sound Mixer", "status": null, "url": null },
+        { "title": "Crossroads", "type": "Narrative Short", "director": "Kian Gholi", "role": null, "status": null, "url": null },
+        { "title": "The Egg", "type": "Narrative Short", "director": "Bradley Stamper", "role": "Gaffer", "status": "In Post-Production", "url": null },
+        { "title": "Misandry Mayhem", "type": "Narrative Short", "director": "Ava Watson", "role": "Script Supervisor and Extra", "status": null, "url": "https://youtu.be/hvOrv9A5A3s?si=CQ-FSFkXgpxFRGwc" },
+        { "title": "Sleeping Ducks", "type": "Narrative Short", "director": "Rebecca Levy & Fletcher Johnson", "role": "Director of Photography", "status": "In Post-Production", "url": null },
+        { "title": "The Crosswalk", "type": "Narrative Short", "director": "KT Phillips & Luke Ballard", "role": "Production Assistant", "status": null, "url": "https://youtu.be/GSDz3si8E_8?si=O2bIFOjxzRP_zDDs" },
+        { "title": "Debut", "type": "Narrative Short", "director": "Ruby Jiang", "role": "Director of Photography", "status": "In Post-Production", "url": null },
+        { "title": "The Alien", "type": "Narrative Short", "director": "Collin Young", "role": "Sound Mixer and supporting role", "status": null, "url": "https://www.youtube.com/watch?v=0ye1uVLarGo" },
+        { "title": "Sketch", "type": "Student Short", "director": "Kian Gholi", "role": null, "status": null, "url": "https://youtu.be/yL4SUQcNg5w?si=iKE7Mtz6sQIUrwsI" },
+        { "title": "Peeking In", "type": "Narrative Silent Short", "director": "Kian Gholi", "role": null, "status": null, "url": "https://youtu.be/aAngFqev9FE?si=ZdjMbTXgW5klu7KD" },
+        { "title": "Inception", "type": "Scene recreation", "director": "Philip Bergquist", "role": "Gaffer", "status": null, "url": "https://youtu.be/qimw3ZvR6nI?si=pnvuCcoSyM9-yOha" },
+        { "title": "Breaking Character", "type": "Narrative Short", "director": "Natalia Gonzalez", "role": "Sound Mixer", "status": null, "url": "https://youtu.be/WuCZhWxGKqE?si=7Ie0oqmUSUopgkhQ" },
+        { "title": "Life’s Many Doors", "type": "Narrative Short", "director": "Collin Young", "role": "Gaffer", "status": null, "url": "https://youtu.be/plO0ERe-uxQ?si=HbJjI3ODwU1_NSZP" },
+        { "title": "On My Way!", "type": "Student Short", "director": "Kian Gholi", "role": null, "status": null, "url": "https://youtu.be/m5VZLKN5h2Y?si=yao36nFSo6daf2tD" },
+        { "title": "Fly On The Wall", "type": "Narrative Short", "director": "Ethan Hughes and Pramodh", "role": "PA", "status": null, "url": "https://youtu.be/Hg1QWvW7MTE?si=G_XapzmWR1EGvXjF" },
+        { "title": "Descent", "type": "Student Short", "director": "Kian Gholi", "role": null, "status": null, "url": "https://vimeo.com/790614366" }
+      ]
+    },
+    {
+      "slug": "music-videos",
+      "title": "Music Videos",
+      "items": [
+        { "title": "Tweakin", "type": "Student Music Video", "director": "Kian Gholi", "role": null, "status": null, "url": "https://youtu.be/bM1AWQPZT8c?si=gheBWoiLTLvj-aHz" }
+      ]
+    },
+    {
+      "slug": "promotionals",
+      "title": "Promotionals",
+      "items": [
+        { "title": "Kian Gholi’s Reel", "type": "Promo Reel", "director": null, "role": null, "status": null, "url": "https://vimeo.com/942207775" },
+        { "title": "AirTag Promo", "type": "Promotional", "director": "Kian Gholi", "role": null, "status": null, "url": "https://vimeo.com/1047388481" },
+        { "title": "Property Promo", "type": "Promotional", "director": "Kian Gholi", "role": null, "status": null, "url": "https://vimeo.com/1027762223" },
+        { "title": "Milton Fire Station Recruit", "type": "Promotional", "director": null, "role": "Edited by: Kian Gholi", "status": null, "url": "https://vimeo.com/810329893" },
+        { "title": "UGA Law School Promo", "type": "Promotional", "director": "Kian Gholi", "role": null, "status": null, "url": "https://vimeo.com/825322959" },
+        { "title": "The Haven at Wake", "type": "Promotional", "director": "Kian Gholi", "role": null, "status": null, "url": "https://youtu.be/BP3UGkumRYE?si=DLyIPze7izZ1eDoQ" }
+      ]
+    }
+  ]
+}

@@ -123,8 +123,8 @@ export default function PhotoPage() {
   const groupSet = useMemo(() => new Set(groups.map((g) => g.slug)), [groups]);
 
   const defaultGroup = useMemo(() => {
-    if (groupSet.has("shows")) return "shows";
-    return groups[0]?.slug || "shows";
+    if (groupSet.has("events")) return "events";
+    return groups[0]?.slug || "events";
   }, [groupSet, groups]);
 
   const activeGroup = group && groupSet.has(group) ? group : defaultGroup;
