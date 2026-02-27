@@ -997,14 +997,12 @@ body {
 
 .homeFooter {
   margin-top: 28px;
+  text-align: center;
 }
 
 .homeFooterInner {
-  background: #ffffff;
-  border: 1px solid rgba(76, 29, 149, 0.14);
   border-radius: 18px;
   padding: 16px 16px;
-  box-shadow: 0 10px 24px rgba(11, 11, 16, 0.08);
 }
 
 .homeFooterTitle {
