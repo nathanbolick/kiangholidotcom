@@ -1257,6 +1257,9 @@ body {
 .photoTab:nth-child(5) {
   animation-delay: 420ms;
 }
+.photoTab:nth-child(6) {
+  animation-delay: 480ms;
+}
 
 .photoTab:hover {
   transform: translateY(-1px);

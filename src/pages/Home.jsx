@@ -140,7 +140,6 @@ function HomeCard({ kind, src, alt, title, meta, href, url }) {
             <HomePhoto src={src} alt={alt} />
           )}
         </div>
-        <div className="homeCaption"></div>
       </Link>
     </article>
   );
@@ -224,22 +223,47 @@ export default function HomePage() {
   const mosaicItems = useMemo(() => {
     const pool = [];
 
-    // Photos: take a small, curated sample from each group
+    // Photos: prefer an explicit curated Home folder (group key: "home")
     const groups = media?.groups || {};
-    const groupKeys = Object.keys(groups).filter((k) => k !== "about");
+    const curatedHome = Array.isArray(groups.home) ? groups.home : [];
 
-    for (const g of groupKeys) {
-      const items = pickFirstN(groups[g], 3);
-      for (const it of items) {
+    if (curatedHome.length > 0) {
+      // Use only Home-curated images for the home mosaic
+      for (const it of pickFirstN(curatedHome, 24)) {
         pool.push({
           kind: "photo",
           src: it?.src || "",
-          alt: it?.name ? `${prettyLabel(g)} — ${it.name}` : prettyLabel(g),
-          title: prettyLabel(g),
+          alt: it?.name ? `Home — ${it.name}` : "Home still",
+          title: "Gallery",
           meta: it?.name ? it.name : "Selected still",
-          href: g === "shows" ? "/photo" : `/photo/${g}`,
+          href: "/photo",
         });
       }
+    } else {
+      // Fallback: sample a small, curated set from each group
+      const groupKeys = Object.keys(groups).filter(
+        (k) => k !== "about" && k !== "film" && k !== "home"
+      );
+
+      for (const g of groupKeys) {
+        const items = pickFirstN(groups[g], 3);
+        for (const it of items) {
+          pool.push({
+            kind: "photo",
+            src: it?.src || "",
+            alt: it?.name ? `${prettyLabel(g)} — ${it.name}` : prettyLabel(g),
+            title: prettyLabel(g),
+            meta: it?.name ? it.name : "Selected still",
+            href: g === "shows" ? "/photo" : `/photo/${g}`,
+          });
+        }
+      }
+    }
+
+    // If Home is curated, keep the mosaic photo-only (no videos)
+    if (curatedHome.length > 0) {
+      const shuffled = shuffleOnce(pool);
+      return shuffled.slice(0, 6);
     }
 
     // Films: take a couple from each section (only those with URLs)
@@ -282,13 +306,7 @@ export default function HomePage() {
     }
 
     if (!hasVideo) {
-      shuffled.push({
-        kind: "video",
-        url: "",
-        title: "Film",
-        meta: "Selected works",
-        href: "/film",
-      });
+      // If there are no videos in the pool (e.g., curated Home photos only), don't force one.
     }
 
     // Render 6 tiles for a fuller mosaic
