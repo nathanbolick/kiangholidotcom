@@ -558,6 +558,22 @@ body {
   display: block;
 }
 
+/* Film placeholders should match the video embed size (16:9) */
+.filmEmbed .photoPlaceholder {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+}
+
+.filmEmbed .photoPlaceholderMark {
+  padding: 18px;
+}
+
+.filmEmbed .photoPlaceholderMarkBottom {
+  font-size: 16px;
+}
+
 .filmCaption {
   margin-top: 10px;
   display: grid;

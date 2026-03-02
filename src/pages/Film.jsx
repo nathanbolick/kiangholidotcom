@@ -90,7 +90,6 @@ function FilmMedia({ embedSrc, title }) {
       <div className="filmEmbed" aria-label="Video placeholder">
         <div className="photoPlaceholder" aria-hidden="true">
           <div className="photoPlaceholderMark">
-            <div className="photoPlaceholderMarkTop">REEL</div>
             <div className="photoPlaceholderMarkBottom">COMING SOON</div>
           </div>
         </div>
