@@ -887,7 +887,7 @@ body {
 
   /* Subtle mosaic rhythm: one hero tile + a couple smaller companions */
   .homeMosaicItem:nth-child(1) {
-    grid-column: span 12;
+    grid-column: span 6;
   }
   .homeMosaicItem:nth-child(2),
   .homeMosaicItem:nth-child(3) {
@@ -896,7 +896,7 @@ body {
   .homeMosaicItem:nth-child(4),
   .homeMosaicItem:nth-child(5),
   .homeMosaicItem:nth-child(6) {
-    grid-column: span 4;
+    grid-column: span 6;
   }
 }
 
