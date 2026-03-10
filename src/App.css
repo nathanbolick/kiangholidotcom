@@ -19,6 +19,9 @@
   --font-display: "Spaced", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 
+  --font-header: "Silver", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
   --font-ui: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
@@ -26,6 +29,14 @@
 @font-face {
   font-family: "Spaced";
   src: url("./assets/GaliverSansObliques-B6xB.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Silver";
+  src: url("./assets/TheSilverEditorial-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -786,23 +797,24 @@ body {
    Home page
    ============================== */
 .home {
-  max-width: 1100px;
+  width: min(1100px, calc(100% - 36px));
   margin: 0 auto;
-  padding: 28px 18px 60px;
+  display: flex;
 }
 
 .homeHeader {
-  margin-bottom: 18px;
+  margin: 0;
+  text-align: center;
 }
 
 .homeH2 {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-header);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 18px;
-  color: var(--text);
-
+  font-size: 50px;
+  color: rgba(255, 255, 255, 0.96);
+  text-align: center;
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -813,7 +825,7 @@ body {
   margin: 12px 0 0;
   font-size: 15px;
   line-height: 1.75;
-  color: var(--textMuted);
+  color: rgba(255, 255, 255, 0.82);
   max-width: 64ch;
 
   opacity: 0;
@@ -864,10 +876,71 @@ body {
   outline-offset: 4px;
 }
 
+.page.home-page-active .top {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 24px;
+  padding-bottom: 8px;
+}
+
+.page.home-page-active {
+  min-height: 100svh;
+}
+
+.page.home-page-active .stage {
+  min-height: 0;
+  display: flex;
+}
+/* Home page: global header reads over full-bleed background */
+.page.home-page-active .brand {
+  text-align: center;
+}
+
+.page.home-page-active .brandTitle {
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 6px 24px rgba(11, 11, 16, 0.18);
+}
+
+.page.home-page-active .nav {
+  justify-content: center;
+}
+
+.page.home-page-active .navLink {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.page.home-page-active .navLink:hover {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.page.home-page-active .navLink::after {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.page.home-page-active .navLink:hover::after,
+.page.home-page-active .navLink:focus-visible::after {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.page.home-page-active .navLinkActive {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.page.home-page-active .navLinkActive::after {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.page.home-page-active .navLink:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+}
+
 .homeCode {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  color: rgba(11, 11, 16, 0.7);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .homeMosaic {
@@ -887,7 +960,7 @@ body {
 
   /* Subtle mosaic rhythm: one hero tile + a couple smaller companions */
   .homeMosaicItem:nth-child(1) {
-    grid-column: span 6;
+    grid-column: span 12;
   }
   .homeMosaicItem:nth-child(2),
   .homeMosaicItem:nth-child(3) {
@@ -896,7 +969,7 @@ body {
   .homeMosaicItem:nth-child(4),
   .homeMosaicItem:nth-child(5),
   .homeMosaicItem:nth-child(6) {
-    grid-column: span 6;
+    grid-column: span 4;
   }
 }
 
@@ -929,6 +1002,7 @@ body {
 }
 
 .homeFrame {
+  height: 100%;
   position: relative;
   border-radius: 16px;
   padding: 14px;
@@ -1036,16 +1110,15 @@ body {
 .homeNote {
   margin: 18px 0 0;
   font-size: 12px;
-  color: rgba(11, 11, 16, 0.56);
+  color: rgba(255, 255, 255, 0.82);
   max-width: 70ch;
 }
 
 .homeTagline {
-  margin-top: 10px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
-  font-size: 12px;
-  color: rgba(11, 11, 16, 0.52);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.82);
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -1053,11 +1126,13 @@ body {
 }
 
 .homeFooter {
-  margin-top: 28px;
+  margin-top: 18px;
   text-align: center;
 }
 
 .homeFooterInner {
+  max-width: 420px;
+  margin: 0 auto;
   border-radius: 18px;
   padding: 16px 16px;
 }

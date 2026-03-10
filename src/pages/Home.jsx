@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import homeBackground from "../assets/2EFDF276-33C2-4DE6-92A6-423B951B9AF3.jpeg";
 
 function getMediaApiUrl() {
   return (
@@ -151,6 +152,7 @@ function pickFirstN(arr, n) {
 }
 
 export default function HomePage() {
+  const location = useLocation();
   const [media, setMedia] = useState(null);
   const [films, setFilms] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -219,6 +221,90 @@ export default function HomePage() {
       cancelled = true;
     };
   }, []);
+
+  useEffect(() => {
+    const pageEl = document.querySelector(".page");
+    const topEl = document.querySelector(".top");
+    const stageEl = document.querySelector(".stage");
+
+    const prevPageStyle = pageEl
+      ? {
+          background: pageEl.style.background,
+          backgroundImage: pageEl.style.backgroundImage,
+          backgroundSize: pageEl.style.backgroundSize,
+          backgroundPosition: pageEl.style.backgroundPosition,
+          backgroundRepeat: pageEl.style.backgroundRepeat,
+          backgroundAttachment: pageEl.style.backgroundAttachment,
+        }
+      : null;
+
+    const prevTopStyle = topEl
+      ? {
+          background: topEl.style.background,
+          backgroundColor: topEl.style.backgroundColor,
+        }
+      : null;
+
+    const prevStageStyle = stageEl
+      ? {
+          background: stageEl.style.background,
+          backgroundColor: stageEl.style.backgroundColor,
+        }
+      : null;
+
+    const isHomeRoute =
+      location.pathname === "/" || location.pathname === "/home";
+
+    if (!isHomeRoute) {
+      return undefined;
+    }
+
+    if (pageEl) {
+      pageEl.style.backgroundImage = `linear-gradient(rgba(11, 11, 16, 0.18), rgba(11, 11, 16, 0.18)), url(${homeBackground})`;
+      pageEl.style.backgroundSize = "cover";
+      pageEl.style.backgroundPosition = "center center";
+      pageEl.style.backgroundRepeat = "no-repeat";
+      pageEl.style.backgroundAttachment = "fixed";
+    }
+
+    if (pageEl) {
+      pageEl.classList.add("home-page-active");
+    }
+
+    if (topEl) {
+      topEl.style.background = "transparent";
+      topEl.style.backgroundColor = "transparent";
+    }
+
+    if (stageEl) {
+      stageEl.style.background = "transparent";
+      stageEl.style.backgroundColor = "transparent";
+    }
+
+    return () => {
+      if (pageEl && prevPageStyle) {
+        pageEl.style.background = prevPageStyle.background;
+        pageEl.style.backgroundImage = prevPageStyle.backgroundImage;
+        pageEl.style.backgroundSize = prevPageStyle.backgroundSize;
+        pageEl.style.backgroundPosition = prevPageStyle.backgroundPosition;
+        pageEl.style.backgroundRepeat = prevPageStyle.backgroundRepeat;
+        pageEl.style.backgroundAttachment = prevPageStyle.backgroundAttachment;
+      }
+
+      if (topEl && prevTopStyle) {
+        topEl.style.background = prevTopStyle.background;
+        topEl.style.backgroundColor = prevTopStyle.backgroundColor;
+      }
+
+      if (stageEl && prevStageStyle) {
+        stageEl.style.background = prevStageStyle.background;
+        stageEl.style.backgroundColor = prevStageStyle.backgroundColor;
+      }
+      if (pageEl) {
+        pageEl.classList.remove("home-page-active");
+      }
+    };
+  }, [location.pathname]);
 
   const mosaicItems = useMemo(() => {
     const pool = [];
@@ -314,54 +400,89 @@ export default function HomePage() {
   }, [media, films]);
 
   return (
-    <section className="home" aria-label="Home">
-      <header className="homeHeader">
-        {error && (
-          <p className="homeNote" role="alert">
-            <span className="homeCode">{error}</span>
-          </p>
-        )}
-      </header>
-
+    <section
+      className="home"
+      aria-label="Home"
+      style={{
+        flex: 1,
+        display: "flex",
+      }}
+    >
       <div
-        className="homeMosaic"
-        data-home-state={loading ? "loading" : "ready"}
+        style={{
+          display: "flex",
+          flex: 1,
+          flexDirection: "column",
+          justifyContent: "space-between",
+          padding: "18px 18px 0",
+        }}
       >
-        {(loading ? Array.from({ length: 6 }) : mosaicItems).map(
-          (item, idx) => (
-            <div
-              key={`${item?.kind || "tile"}-${idx}`}
-              className="homeMosaicItem"
-            >
-              {loading ? (
-                <HomeCard
-                  kind={idx % 3 === 0 ? "video" : "photo"}
-                  src={""}
-                  alt="Loading"
-                  title="Loading"
-                  meta=""
-                  href={"/"}
-                  url=""
-                />
-              ) : (
-                <HomeCard {...item} />
-              )}
-            </div>
-          )
-        )}
-      </div>
+        <header className="homeHeader">
+          <div className="homeTagline">Filmmaker, Editor, Photographer</div>
 
-      <footer className="homeFooter" aria-label="Contact">
-        <div className="homeFooterInner">
-          <div className="homeFooterTitle">For work & collaborations</div>
-          <div className="homeFooterMeta">
-            Visit the About page for contact details and links.
-          </div>
-          <Link className="homeFooterLink" to="/about">
-            About & Links
-          </Link>
+          {error && (
+            <p className="homeNote" role="alert">
+              <span className="homeCode">{error}</span>
+            </p>
+          )}
+        </header>
+
+        {/*
+        <div
+          className="homeMosaic"
+          data-home-state={loading ? "loading" : "ready"}
+        >
+          {(loading ? Array.from({ length: 6 }) : mosaicItems).map(
+            (item, idx) => (
+              <div
+                key={`${item?.kind || "tile"}-${idx}`}
+                className="homeMosaicItem"
+              >
+                {loading ? (
+                  <HomeCard
+                    kind={idx % 3 === 0 ? "video" : "photo"}
+                    src={""}
+                    alt="Loading"
+                    title="Loading"
+                    meta=""
+                    href={"/"}
+                    url=""
+                  />
+                ) : (
+                  <HomeCard {...item} />
+                )}
+              </div>
+            )
+          )}
         </div>
-      </footer>
+        */}
+        {/*
+        <footer
+          className="homeFooter"
+          aria-label="Contact"
+          style={{ marginTop: "auto" }}
+        >
+          
+          <div
+            className="homeFooterInner"
+            style={{
+              background: "rgba(255, 255, 255, 0.82)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+            }}
+          >
+            <div className="homeFooterTitle">For work & collaborations</div>
+            <div className="homeFooterMeta">
+              Visit the About page for contact details and links.
+            </div>
+            <Link className="homeFooterLink" to="/about">
+              About & Links
+            </Link>
+          </div>
+
+        </footer>
+        */}
+      </div>
     </section>
   );
 }
