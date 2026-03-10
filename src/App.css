@@ -1,6 +1,7 @@
 :root {
   /* White + Purple (readable gallery theme) */
   --bg: #fffbf5;
+  --bghome: #0a112f;
   --surface: #f6f3ff;
 
   --purple: #ab5dff;
@@ -888,6 +889,15 @@ body {
 
 .page.home-page-active {
   min-height: 100svh;
+}
+
+/* Dark browser/background only when on the Home page */
+body:has(.page.home-page-active) {
+  background: var(--bghome);
+}
+
+.page.home-page-active {
+  background: var(--bghome);
 }
 
 .page.home-page-active .stage {
