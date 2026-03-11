@@ -799,8 +799,17 @@ body {
    ============================== */
 .home {
   width: min(1100px, calc(100% - 36px));
-  margin: 0 auto;
+  margin: 0;
   display: flex;
+  flex: 1;
+}
+
+.homeShell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 18px 18px 0;
 }
 
 .homeHeader {
@@ -840,7 +849,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-
   opacity: 0;
   transform: translateY(14px);
   animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -883,8 +891,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 24px;
-  padding-bottom: 8px;
+  padding-top: 2px;
+  padding-bottom: 3px;
 }
 
 .page.home-page-active {
@@ -1088,7 +1096,6 @@ body:has(.page.home-page-active) {
 }
 
 .homePlaceholderMarkBottom {
-  margin-top: 8px;
   font-family: var(--font-display);
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1099,7 +1106,6 @@ body:has(.page.home-page-active) {
 }
 
 .homeCaption {
-  margin-top: 10px;
   display: grid;
   gap: 4px;
 }
@@ -1136,29 +1142,39 @@ body:has(.page.home-page-active) {
 }
 
 .homeFooter {
-  margin-top: 18px;
+  margin-top: auto;
+  padding-top: 1px;
   text-align: center;
 }
 
 .homeFooterInner {
   max-width: 420px;
-  margin: 0 auto;
+  margin: 5px auto;
   border-radius: 18px;
-  padding: 16px 16px;
+  padding: 10px 10px;
 }
 
 .homeFooterTitle {
-  font-family: var(--font-display);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  font-size: 13px;
-  color: rgba(11, 11, 16, 0.92);
+  font-size: 0.8rem;
+  color: white;
+
+  opacity: 0;
+  transform: translateY(14px);
+  animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: 180ms;
 }
 
 .homeFooterMeta {
   margin-top: 8px;
   font-size: 13px;
-  color: var(--textMuted);
+  color: white;
+
+  opacity: 0;
+  transform: translateY(14px);
+  animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: 240ms;
 }
 
 .homeFooterLink {
@@ -1167,28 +1183,32 @@ body:has(.page.home-page-active) {
   align-items: center;
   justify-content: center;
   padding: 8px 12px;
-  border: 1px solid rgba(76, 29, 149, 0.18);
+  border: 1px solid whitesmoke;
   border-radius: 999px;
   text-decoration: none;
-  color: rgba(11, 11, 16, 0.74);
-  background: rgba(171, 93, 255, 0.08);
+  color: white;
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   transition: transform 160ms ease, border-color 160ms ease, color 160ms ease,
     box-shadow 160ms ease;
+
+  opacity: 0;
+  transform: translateY(14px);
+  animation: aboutSwipeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: 300ms;
 }
 
 .homeFooterLink:hover {
   transform: translateY(-1px);
-  color: rgba(11, 11, 16, 0.92);
-  border-color: rgba(124, 58, 237, 0.35);
+  color: white;
+  border-color: white;
   box-shadow: 0 10px 22px rgba(11, 11, 16, 0.14),
     0 0 18px rgba(124, 58, 237, 0.18);
 }
 
 .homeFooterLink:focus-visible {
-  outline: 2px solid rgba(124, 58, 237, 0.65);
+  outline: 2px solid white;
   outline-offset: 4px;
 }
 

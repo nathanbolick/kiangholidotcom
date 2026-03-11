@@ -400,23 +400,8 @@ export default function HomePage() {
   }, [media, films]);
 
   return (
-    <section
-      className="home"
-      aria-label="Home"
-      style={{
-        flex: 1,
-        display: "flex",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flex: 1,
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: "18px 18px 0",
-        }}
-      >
+    <section className="home" aria-label="Home">
+      <div className="homeShell">
         <header className="homeHeader">
           <div className="homeTagline">Filmmaker, Editor, Photographer</div>
 
@@ -427,7 +412,24 @@ export default function HomePage() {
           )}
         </header>
 
-        {/*
+        <footer className="homeFooter" aria-label="Contact">
+          <div className="homeFooterInner">
+            <div className="homeFooterTitle">Let’s Connect</div>
+            <div className="homeFooterMeta">
+              For projects, collaborations, and editing inquiries.
+            </div>
+            <a
+              className="homeFooterLink"
+              href="mailto:kianbaghshahi@gmail.com"
+              aria-label="Email Kian Gholi"
+            >
+              kianbaghshahi@gmail.com
+            </a>
+          </div>
+        </footer>
+      </div>
+
+      {/*
         <div
           className="homeMosaic"
           data-home-state={loading ? "loading" : "ready"}
@@ -456,33 +458,6 @@ export default function HomePage() {
           )}
         </div>
         */}
-        {/*
-        <footer
-          className="homeFooter"
-          aria-label="Contact"
-          style={{ marginTop: "auto" }}
-        >
-          
-          <div
-            className="homeFooterInner"
-            style={{
-              background: "rgba(255, 255, 255, 0.82)",
-              backdropFilter: "blur(8px)",
-              WebkitBackdropFilter: "blur(8px)",
-            }}
-          >
-            <div className="homeFooterTitle">For work & collaborations</div>
-            <div className="homeFooterMeta">
-              Visit the About page for contact details and links.
-            </div>
-            <Link className="homeFooterLink" to="/about">
-              About & Links
-            </Link>
-          </div>
-
-        </footer>
-        */}
-      </div>
     </section>
   );
 }
