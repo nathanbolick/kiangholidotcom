@@ -1179,6 +1179,7 @@ body:has(.page.home-page-active) {
 
 .homeFooterLink {
   margin-top: 12px;
+  margin-bottom: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
