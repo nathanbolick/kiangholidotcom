@@ -65,13 +65,7 @@ body {
 
 /* Subtle texture on white */
 .page::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: var(--bg);
-  opacity: 0.22;
-  mix-blend-mode: multiply;
+  content: none;
 }
 
 /* Top centered header area */
