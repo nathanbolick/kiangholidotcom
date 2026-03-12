@@ -202,6 +202,22 @@ export default function PhotoPage() {
             />
           ))}
       </div>
+      <div className="aboutDivider" role="separator" aria-hidden="true" />
+      <footer className="homeFooter" aria-label="Contact">
+        <div className="homeFooterInner">
+          <div className="homeFooterTitle">Let’s Connect</div>
+          <div className="homeFooterMeta">
+            For projects, collaborations, and editing inquiries.
+          </div>
+          <a
+            className="homeFooterLink"
+            href="mailto:kianbaghshahi@gmail.com"
+            aria-label="Email Kian Gholi"
+          >
+            kianbaghshahi@gmail.com
+          </a>
+        </div>
+      </footer>
     </section>
   );
 }

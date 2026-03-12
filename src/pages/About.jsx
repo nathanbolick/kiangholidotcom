@@ -136,7 +136,7 @@ export default function AboutPage() {
 
           {/* Social Links */}
           <section className="aboutSocial" aria-label="Social links">
-            <h3 className="aboutSkillsTitle">Connect</h3>
+            <h3 className="aboutSkillsTitle">Follow</h3>
 
             <div className="aboutSocialGrid">
               <a
@@ -201,6 +201,22 @@ export default function AboutPage() {
               <div className="aboutDetailValue"></div>
             </div>
           </div>
+          <div className="aboutDivider" role="separator" aria-hidden="true" />
+          <footer className="homeFooter" aria-label="Contact">
+            <div className="homeFooterInner">
+              <div className="homeFooterTitle">Let’s Connect</div>
+              <div className="homeFooterMeta">
+                For projects, collaborations, and editing inquiries.
+              </div>
+              <a
+                className="homeFooterLink"
+                href="mailto:kianbaghshahi@gmail.com"
+                aria-label="Email Kian Gholi"
+              >
+                kianbaghshahi@gmail.com
+              </a>
+            </div>
+          </footer>
         </div>
       </div>
     </section>
